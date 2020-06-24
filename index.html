@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="js/rem.js">
+    <style>
+        .con{
+            padding: 5rem 0;
+            width: 100%;
+            height:43.75rem;
+            background-image: url(rx/96.jpg);
+            background-size: cover;
+        }
+        .con-big{
+            text-align: center;
+            width: 18.75rem;
+            height: 31.25rem;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <div class="con-big">
+        <h4>剩余时间</h4>
+        <p>
+        <p class="future"></p>
+        <p class="now"></p>
+        </p>
+        <p>
+            一共<span class="aa"></span>小时
+        </p>
+    </div>
+</div>
+<script>
+    var future = document.querySelector('.future');
+    var now = document.querySelector('.now');
+    var aa = document.querySelector('.aa');
+
+    var timer = setInterval(benner,1000);
+    function benner(){
+        var gg = new Date("2020/08/10 00:00:00");
+        var ggn=gg.getFullYear();
+        var ggy=gg.getMonth()+1;
+        var ggr=gg.getDate();
+        var ggx=gg.getUTCDay();
+        if(ggx == 0){
+            ggx = '星期天';
+        }else if(ggx==1){
+            ggx = '星期一';
+        }
+        else if(ggx==2){
+            ggx = '星期二';
+        }
+        else if(ggx==3){
+            ggx = '星期三';
+        }
+        else if(ggx==4){
+            ggx = '星期四';
+        }
+        else if(ggx==5){
+            ggx = '星期五';
+        }
+        else if(ggx==6){
+            ggx = '星期六';
+        }
+
+        var nowTime = new Date();
+        var lastTime = parseInt((gg - nowTime) / 1000);
+        var day = parseInt((lastTime / 60 / 60 / 24));
+        var hour = parseInt((lastTime / 60 / 60 % 24));
+        var min = parseInt((lastTime / 60 % 60));
+        var sec = parseInt((lastTime % 60));
+        var hours = parseInt((lastTime/60/60));
+        // console.log(hours);
+        aa.innerHTML = hours;
+
+        var sy = day + '天' + hour + '时' + min + '分' + sec + '秒';
+
+        var dd = ggn+'年'+ggy+'月'+ggr+'日'+' '+ggx;
+
+        future.innerText = dd;
+        now.innerText = sy;
+    }
+
+
+</script>
+</body>
+</html>
